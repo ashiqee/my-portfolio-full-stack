@@ -23,10 +23,10 @@ export default function FrontLayout({
           <BackgroundAnimation/>
             <section>{banner}</section>
 
-            <section className="h-screen pt-20" id="about">
+            <section  id="about">
               {about}
             </section>
-            <section className="h-screen pt-20" id="work">
+            <section className="h-screen pt-20" id="projects">
               {work}
             </section>
             <section className="h-screen pt-20" id="contact">

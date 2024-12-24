@@ -1,0 +1,7 @@
+.hover-text {
+    @apply inline-block  transition-transform transform hover:scale-110;
+  
+    /* Add the provided transition and transform properties */
+    transition: transform 0.4s ease, -webkit-transform 0.8s ease;
+    transform: translateY(var(--m)) translateZ(0);
+  }

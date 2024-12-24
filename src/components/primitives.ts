@@ -10,6 +10,9 @@ export const title = tv({
       cyan: "from-[#00b7fa] to-[#01cfea]",
       green: "from-[#6FEE8D] to-[#17c964]",
       pink: "from-[#FF72E1] to-[#F54C7A]",
+      orange: "from-[#FFA726] to-[#FF7043]", // New gradient
+      indigo: "from-[#3F51B5] to-[#5C6BC0]", // New gradient
+      teal: "from-[#00897B] to-[#26A69A]", // New gradient
       foreground: "dark:from-[#FFFFFF] dark:to-[#4B4B4B]",
     },
     size: {
@@ -33,12 +36,16 @@ export const title = tv({
         "cyan",
         "green",
         "pink",
+        "orange",
+        "indigo",
+        "teal",
         "foreground",
       ],
-      class: "bg-clip-text text-transparent bg-gradient-to-b",
+      class: "bg-clip-text text-transparent bg-gradient-to-t",
     },
   ],
 });
+
 
 export const subtitle = tv({
   base: "w-full md:w-1/2 my-2 text-sm text-right  text-default-600 block max-w-full",
