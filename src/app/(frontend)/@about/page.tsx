@@ -4,13 +4,14 @@ import Image from "next/image";
 
 import React from "react";
 import Skills from "../_components/Skills";
+import { FaLinkedin } from "react-icons/fa";
 
 const AboutSection = () => {
   return (
-    <div className="flex flex-col min-h-screen justify-center items-center">
+    <div className="flex flex-col  justify-center items-center px-6 md:px-0 text-justify ">
         {/* top section  */}
-     <div className="md:flex justify-between items-center">
-     <div className="space-y-4">
+     <div className="md:flex min-h-screen justify-between items-center">
+     <div className="space-y-4 mb-10 md:mb-0">
         <h3 className="text-[2.3rem] lg:text-5xl leading-9">
           Who{" "}
           <span className={title({ color: "violet", size: "md" })}>
@@ -32,9 +33,11 @@ const AboutSection = () => {
           development.
         </p>
 
-        <Button variant="bordered" className="rounded-small">
-          Linkedin
-        </Button>
+        <Button variant="bordered" className="rounded-small 
+        hover:bg-slate-800 hover:text-white
+        shadow-md shadow-blue-700/45  my-10">
+        <FaLinkedin />
+        Linkedin</Button>
       </div>
 
       <div>
@@ -44,7 +47,7 @@ const AboutSection = () => {
 
      {/* skilss section  */}
 
-     <section>
+     <section className="my-20">
         <Skills />
      </section>
     </div>

@@ -1,4 +1,4 @@
-import BackgroundAnimation from "@/components/Animations/BackgroundAnimation";
+
 import { Navbar } from "@/components/navbar";
 
 
@@ -20,20 +20,21 @@ export default function FrontLayout({
         <div className="bg-gradient-to-b  dark:from-pink-300/5 dark:to-slate-900/5">
           <Navbar />
           <div className="container  mx-auto max-w-7xl flex-grow">
-          <BackgroundAnimation/>
+       
             <section>{banner}</section>
 
             <section  id="about">
               {about}
             </section>
-            <section className="h-screen pt-20" id="projects">
+            <section className=" pt-20" id="projects">
               {work}
             </section>
-            <section className="h-screen pt-20" id="contact">
+            <section className=" pt-20" id="contact">
               {contact}
             </section>
           </div>
         </div>
+      
       </div>
     </>
   );

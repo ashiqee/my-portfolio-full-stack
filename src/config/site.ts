@@ -62,4 +62,5 @@ export const siteConfig = {
     discord: "https://discord.gg/zQBP5Tmn",
     sponsor: "https://patreon.com/jrgarciadev",
   },
+  
 };

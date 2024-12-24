@@ -1,7 +1,7 @@
 import { Navbar } from "@/components/navbar";
 
 
-export default function FrontLayout({
+export default function BackendLayout({
   children,
 }: {
   children: React.ReactNode;

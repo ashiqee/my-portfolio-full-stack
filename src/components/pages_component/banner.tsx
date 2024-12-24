@@ -8,7 +8,7 @@ import { GithubIcon } from "@/components/icons";
 
 export default function Banner() {
     return (
-        <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
+        <section className="flex flex-col items-center justify-center gap-4 py-8 mb-28  md:py-10">
         <div className="inline-block max-w-xl text-left justify-center">
           <span className={title()}>Ashek Mahmud&nbsp;</span>
           <span className={title({ color: "violet" })}>Ashik&nbsp;</span>
@@ -26,7 +26,7 @@ export default function Banner() {
             isExternal
             className={buttonStyles({
               color: "primary",
-              radius: "full",
+              radius: "sm",
               variant: "shadow",
             })}
             href={siteConfig.links.docs}
@@ -35,7 +35,8 @@ export default function Banner() {
           </Link>
           <Link
             isExternal
-            className={buttonStyles({ variant: "bordered", radius: "full" })}
+          
+            className={buttonStyles({ variant: "bordered", radius: "sm", })}
             href={siteConfig.links.github}
           >
             <GithubIcon size={20} />
