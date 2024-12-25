@@ -29,10 +29,10 @@ const BannerSection = () => {
         <div className="flex justify-center">
           <div className="2xl:h-[600px] md:h-[400px] md:w-full h-[300px] w-[220px] 2xl:w-[400px] rounded-full hover:shadow-md shadow-lg shadow-slate-800/45 border border-blue-900/25 p-6 relative overflow-hidden">
             <Image
-              src={'/images/ashiq-profile.png'}
+              src={'/images/ashiq-img.png'}
               className="object-cover w-full h-full rounded-full"
-              width={800}
-              height={800}
+              width={1800}
+              height={1800}
               alt="ashiq"
             />
             <div className="absolute hidden md:block w-full bottom-0 left-1/2 transform -translate-x-1/2 shadow-red-500 bg-slate-900/55 text-white text-center px-4 py-2 rounded-t-lg shadow-lg">
