@@ -14,7 +14,7 @@ const ProjectCards = () => {
         onMouseLeave={() => setIsHovering(false)}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="w-full h-[360px] col-span-12 sm:col-span-7"
+        className="w-full h-[320px] col-span-12 sm:col-span-7"
       >
         <Card isFooterBlurred className="relative w-full h-full">
           <motion.div
