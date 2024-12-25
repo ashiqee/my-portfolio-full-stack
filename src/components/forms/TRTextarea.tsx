@@ -1,20 +1,20 @@
 'use client'
-import { Input } from '@nextui-org/input';
+import { Textarea } from '@nextui-org/input';
 import React from 'react';
 import {useFormContext } from "react-hook-form";
 
-import { IInput } from '@/types';
+import { IRTextarea } from '@/types';
 
-interface IProps extends IInput{}
+interface IProps extends IRTextarea{}
 
-const TRInput = ({
+const TRTextarea = ({
     variant ='bordered',
     size="sm",
     isRequired=false,
     type="text",
     label,
-    name,
-    readOnly
+    rows,
+    name
 }:IProps) => {
 
 
@@ -23,14 +23,14 @@ const TRInput = ({
     }=useFormContext()
 
     return (
-        <Input
+        <Textarea
         {...register(name)}
         errorMessage={errors?.[name]? (errors[name]?.message as string ) :""}
         isInvalid={!!errors?.[name]}
         isRequired={isRequired}
         label={label}
         name={name}
-        readOnly={readOnly}
+        rows={rows}
         size={size}
         type={type}
         variant={variant}
@@ -40,4 +40,4 @@ const TRInput = ({
     );
 };
 
-export default TRInput;
+export default TRTextarea;

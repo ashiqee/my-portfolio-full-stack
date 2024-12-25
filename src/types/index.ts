@@ -5,12 +5,22 @@ export type IconSvgProps = SVGProps<SVGSVGElement> & {
 };
 
 
-
 export interface IInput {
   variant?: "flat"|"bordered"|"faded"|'underlined';
   size?:"sm"| "md" | "lg";
   isRequired?:boolean;
   type?:string;
+  label?:string;
+  name:string;
+  disable?:boolean;
+  readOnly?:boolean;
+}
+export interface IRTextarea {
+  variant?: "flat"|"bordered"|"faded"|'underlined';
+  size?:"sm"| "md" | "lg";
+  isRequired?:boolean;
+  type?:string;
+  rows?:number;
   label?:string;
   name:string;
   disable?:boolean;
@@ -39,7 +49,8 @@ export interface IComment {
 
 export interface IPost  {
   user: string;
-  postContent?: string;
+  title: string;
+  description?: string;
   video?: string;
   images?: string[];
   isPremium: boolean;
@@ -63,4 +74,9 @@ export interface ICategories {
 
 export interface CategoriesResponse {
   data: ICategories;
+}
+
+export interface CustomJwtPayload {
+  role?:string;
+  userEmail?:string;
 }

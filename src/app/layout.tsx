@@ -5,7 +5,7 @@ import clsx from "clsx";
 
 
 import { siteConfig } from "@/config/site";
-import { fontSans } from "@/config/fonts";
+import { jetbrainsMono } from "@/config/fonts";
 
 import { Providers } from './../lib/Providers/index';
 
@@ -38,12 +38,12 @@ export default function RootLayout({
       <body
         className={clsx(
           "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable,
+          jetbrainsMono.variable,
         )}
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
                    
-            <main>
+            <main className="font-jetBrains">
               {children}
             </main>
         

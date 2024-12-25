@@ -1,21 +1,20 @@
-import { Navbar } from "@/components/navbar";
+import React, { ReactNode } from 'react';
+
+import Sidebar from './components/Sidebar';
 
 
-export default function BackendLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
+const BackendLayout = ({ children }: { children: ReactNode }) => {
+    return (
+        <div className="flex">
            
-          <div className="relative flex flex-col h-screen bg-gradient-to-bl dark:from-sky-900/45 dark:to-slate-900/25">
+            <Sidebar />
+
            
-            <main className=" pt-16 px-1 flex-grow bg-gradient-to-b dark:from-sky-900/5 dark:to-slate-900/5">
-              {children}
-            </main>
-           
-          </div>
-       
-    
-  );
-}
+            <div className=" w-full p-6 overflow-y-auto h-screen dark:bg-slate-900/85 bg-gray-100">
+                {children}
+            </div>
+        </div>
+    );
+};
+
+export default BackendLayout;
