@@ -10,18 +10,19 @@ import AnimatedElements from '@/components/Animations/AnimatedElements';
 const BannerSection = () => {
   return (
     <>
-      <div className="flex md:flex-row  flex-col-reverse container justify-around mx-auto 2xl:justify-between min-h-[calc(100vh-80px)] items-center">
-        <div className="absolute z-0 opacity-10 -translate-x-20 hover:translate-x-40 duration-1000 md:top-36 md:left-44 2xl:left-96">
+      <div className="flex md:flex-row  flex-col-reverse container  mx-auto md:px-6 2xl:px-0 justify-between min-h-[calc(100vh-80px)] items-center">
+        <div className="absolute z-0 opacity-10 -translate-x-20 hover:translate-x-40
+         duration-1000 2xl:top-36 md:left-44 2xl:left-96">
           <Image
             src={'https://i.pinimg.com/originals/81/17/8b/81178b47a8598f0c81c4799f2cdd4057.gif'}
-            className="object-cover h-full rounded-2xl"
+            className="object-cover md:w-[80%] 2xl:w-full h-full rounded-2xl"
             width={800}
             height={800}
             alt="ashiq"
           />
         </div>
 
-        <section className="w-1/2">
+        <section className="">
           <Banner />
         </section>
 

@@ -76,20 +76,20 @@ const skillData = [
 
 const Skills = () => {
   return (
-    <div id="skills" className="  text-white p-2 md:p-0 md:py-20 my-auto ">
-      <div className="text-center  ">
+    <div id="skills" className="   p-2 md:p-0 md:py-20 my-auto ">
+      <div className="text-left  ">
         <div className="pb-10 space-y-4">
           <h2 className="text-3xl">
             <TextHover>Innovating Through Web Development!</TextHover>
           </h2>
-          <p className="md:w-1/2 sm:mx-12 md:mx-auto">
+          <p className="">
             👋Passionate MERN (MongoDB, Express.js, React.js, Node.js) stack
             developer eager to make a mark in the world of web development.
           </p>
         </div>
         <div className="flex flex-wrap  gap-6 items-center justify-center">
           {skillData.map((data) => (
-            <div className=" w-full md:w-24" key={data.id}>
+            <div className=" " key={data.id}>
               <motion.div
                 initial={{ scale: 0 }}
                 animate={{ rotate: 360, scale: 1 }}
@@ -100,7 +100,7 @@ const Skills = () => {
                 }}
               >
                 <div className="w-12 md:w-16">
-                  <img className="mask grayscale hover:grayscale-0 mask-circle object-fit" src={data.img} />
+                  <img className="mask grayscale hover:scale-110 duration-1000 hover:grayscale-0 mask-circle object-fit" src={data.img} />
                 </div>
               </motion.div>{" "}
             </div>

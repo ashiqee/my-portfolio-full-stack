@@ -28,7 +28,7 @@ export default function ContactForms() {
 
   return (
     <>
-      <form className="space-y-10 max-w-xl" onSubmit={handleSubmit}>
+      <form className="space-y-10 relative z-30 max-w-xl" onSubmit={handleSubmit}>
         <div className="flex items-center gap-4">
           <Input
             name="name"

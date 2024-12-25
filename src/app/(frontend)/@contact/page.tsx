@@ -10,7 +10,7 @@ import AnimatedElements from '@/components/Animations/AnimatedElements';
 
 const ContactSection = () => {
     return (
-        <div className='md:flex  relative justify-between items-center min-h-screen'>
+        <div className='md:flex z-10 mx-6 2xl:mx-0 relative justify-between items-center min-h-screen'>
             
 
            <section className='flex flex-col   gap-4 py-8 md:py-10'>

@@ -26,10 +26,10 @@ export default function FrontLayout({
             <section  id="about">
               {about}
             </section>
-            <section className=" pt-20" id="projects">
+            <section className=" " id="projects">
               {work}
             </section>
-            <section className=" pt-20" id="contact">
+            <section className="" id="contact">
               {contact}
             </section>
           </div>

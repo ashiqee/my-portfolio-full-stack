@@ -8,7 +8,7 @@ import { FaLinkedin } from "react-icons/fa";
 
 const AboutSection = () => {
   return (
-    <div className="flex flex-col  justify-center items-center px-6 md:px-0 text-justify ">
+    <div className="flex flex-col  justify-center items-center mx-6 2xl:mx-0 text-justify ">
         {/* top section  */}
      <div className="md:flex min-h-screen justify-between items-center">
      <div className="space-y-4 mb-10 md:mb-0">
@@ -50,6 +50,12 @@ const AboutSection = () => {
      <section className="my-20">
         <Skills />
      </section>
+
+     {/* academic section  */}
+    <section>
+      
+    </section>
+
     </div>
   );
 };

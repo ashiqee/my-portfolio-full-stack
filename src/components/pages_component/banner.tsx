@@ -21,7 +21,7 @@ export default function Banner() {
           </div>
         </div>
   
-        <div className="flex   gap-3">
+        <div className="flex flex-start  w-full  gap-3">
           <Link
             isExternal
             className={buttonStyles({
