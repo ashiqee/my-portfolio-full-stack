@@ -4,6 +4,7 @@ import Image from "next/image";
 
 import React from "react";
 import Skills from "../_components/Skills";
+import Education from "../_components/Education";
 import { FaLinkedin } from "react-icons/fa";
 
 const AboutSection = () => {
@@ -53,7 +54,7 @@ const AboutSection = () => {
 
      {/* academic section  */}
     <section>
-      
+      <Education/>
     </section>
 
     </div>
