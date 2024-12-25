@@ -8,7 +8,7 @@ import { GithubIcon } from "@/components/icons";
 
 export default function Banner() {
     return (
-        <section className="flex flex-col items-center justify-center gap-4 py-8 mb-28  md:py-10">
+        <section className="flex flex-col items-center justify-center gap-4 py-8 mb-28 px-6 md:px-0  md:py-10">
         <div className="inline-block max-w-xl text-left justify-center">
           <span className={title()}>Ashek Mahmud&nbsp;</span>
           <span className={title({ color: "violet" })}>Ashik&nbsp;</span>

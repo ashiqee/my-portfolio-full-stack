@@ -13,7 +13,7 @@ const ProjectCards = () => {
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
         whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+        whileTap={{ scale: 0.5 }}
         className="w-full h-[320px] col-span-12 sm:col-span-7"
       >
         <Card isFooterBlurred className="relative w-full h-full">
@@ -32,20 +32,20 @@ const ProjectCards = () => {
           </motion.div>
           <motion.div
             initial={{ y: '100%' }}
-            animate={{ y: isHovering ? '0%' : '100%' }}
+            animate={{ y: isHovering ? '6%' : '100%' }}
             transition={{ duration: 0.5, ease: 'easeInOut' }}
-            className="absolute bottom-0 w-full text-white bg-black/85 z-10"
+            className="absolute bottom-0 w-full  text-white bg-black/85 z-10"
           >
-            <CardFooter className="flex flex-col gap-3">
-              <div className="w-full">
+            <CardFooter className="flex flex-col  gap-3">
+              <div className="w-full h-full">
                 <div className="flex flex-col">
                   <p className="text-xl">Breathing App</p>
-                  <p className="text-tiny text-white/60">
+                  <p className="text-tiny  text-white/60">
                     A brief description of Project One. This is a short description.
                   </p>
                 </div>
               </div>
-              <div className="flex w-full gap-2 justify-between items-center">
+              <div className="flex w-full pb-2 gap-2 justify-between items-center">
                 <p className="text-tiny">Jan-2023 - May-2023</p>
                 <div className="flex gap-2">
                   <Button className="hover:bg-slate-800 text-white" variant="bordered" radius="sm" size="sm">

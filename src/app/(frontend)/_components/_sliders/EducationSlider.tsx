@@ -58,21 +58,21 @@ const EducationSlider = () => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative ">
     
-      <p className="text-teal-400 text-sm ">STUDIED AT</p>
+     
 
-      <div className=" flex items-center justify-center">
+      <div className=" w-72  md:w-full flex items-center justify-center">
         {/* Slider Container */}
-        <div className="overflow-hidden w-full ">
+        <div className="overflow-hidden    w-full   ">
           <div
-            className="flex gap-6 transition-transform duration-500"
+            className="flex w-full gap-6 transition-transform duration-1000"
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
             {educationData.map((item, index) => (
               <div
                 key={index}
-                className="min-w-[48%] px-6 py-10 hover:bg-teal-400/5 border-r-1 rounded-xl shadow-lg flex flex-col gap-2"
+                className="md:min-w-[48%]   min-w-[95%] md:px-6 px-2 py-10 hover:bg-teal-400/5 border-r-1 rounded-xl shadow-lg flex flex-col gap-2"
               ><div className='flex gap-4 items-center'>
                 
                 <svg
@@ -90,13 +90,13 @@ const EducationSlider = () => {
         strokeLinejoin="round"
       />
     </svg>
-              <div>
-              <p className="text-teal-400 text-lg font-bold">{item.year}</p>
-              <h3 className="text-xl font-semibold">{item.title}</h3>
+              <div className='text-left'>
+              <p className="text-teal-400 text-sm md:text-lg font-bold">{item.year}</p>
+              <h3 className="text-[13px] md:text-xl font-semibold">{item.title}</h3>
               </div>
               </div>
-                <p className="text-sm ">{item.institute}</p>
-                <p className="text-sm ">{item.description}</p>
+                <p className="text-[10px] md:text-sm ">{item.institute}</p>
+                <p className="text-[10px] max-w-[250px] md:text-sm ">{item.description}</p>
               </div>
             ))}
           </div>
@@ -106,7 +106,7 @@ const EducationSlider = () => {
           {/* Previous Button */}
           <button
           onClick={prevSlide}
-          className="absolute top-0 right-32 bg-gray-900 px-8 text-white p-6 rounded-full hover:bg-teal-400/5 transition"
+          className="absolute -top-10 right-16 md:right-32 bg-gray-900 px-4 p-2 md:px-8 text-white md:p-6 rounded-full hover:bg-teal-400/5 transition"
         >
           ❮
         </button>
@@ -114,7 +114,7 @@ const EducationSlider = () => {
         {/* Next Button */}
         <button
           onClick={nextSlide}
-          className="absolute top-0 right-0 bg-gray-900 text-white p-6 px-8  rounded-full hover:bg-teal-400/5 transition"
+          className="absolute -top-10 right-1 md:right-0 bg-gray-900 text-white  px-4 p-2 md:p-6 md:px-8  rounded-full hover:bg-teal-400/5 transition"
         >
           ❯
         </button>
@@ -123,18 +123,19 @@ const EducationSlider = () => {
 
       {/* Dots */}
       <div className="flex justify-center mt-6 gap-2">
-        {educationData.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentIndex(index)}
-            className={`w-3 h-3 rounded-full ${
-              index === currentIndex
-                ? 'bg-teal-400'
-                : 'bg-gray-600 hover:bg-gray-400'
-            }`}
-          ></button>
-        ))}
-      </div>
+  {Array.from({ length: Math.ceil(educationData.length / 2) }, (_, index) => (
+    <button
+      key={index}
+      onClick={() => setCurrentIndex(index)}
+      className={`w-3 h-3 rounded-full ${
+        index === currentIndex
+          ? 'bg-teal-400'
+          : 'bg-gray-600 hover:bg-gray-400'
+      }`}
+    ></button>
+  ))}
+</div>
+
     </div>
   );
 };

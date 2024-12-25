@@ -13,7 +13,7 @@ const WorkSection = () => {
           <p>Explore some of my latest full-stack projects, highlighting the technologies used and their unique features.</p>
        
         </div>
-        <div className='grid grid-cols-3  gap-6'>
+        <div className='grid grid-cols-1 md:grid-cols-3  gap-6'>
 
         {
                 [...Array(6)].map((_, i) => (<div key={i}>
