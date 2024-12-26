@@ -1,8 +1,9 @@
 "use client";
 
-import { MailIcon } from "@/components/forms/icons/MailIcons";
 import { Button, Input, Textarea } from "@nextui-org/react";
 import { useState } from "react";
+
+import { MailIcon } from "@/components/forms/icons/MailIcons";
 
 export default function ContactForms() {
   const [formData, setFormData] = useState({
@@ -12,8 +13,11 @@ export default function ContactForms() {
     message: "",
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
+
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -28,21 +32,24 @@ export default function ContactForms() {
 
   return (
     <>
-      <form className="space-y-10 relative z-30 max-w-xl" onSubmit={handleSubmit}>
+      <form
+        className="space-y-10 relative z-30 max-w-xl"
+        onSubmit={handleSubmit}
+      >
         <div className="flex items-center gap-4">
           <Input
-            name="name"
             label="Name"
             labelPlacement="outside"
+            name="name"
             placeholder="Full name"
             type="text"
             value={formData.name}
             onChange={handleInputChange}
           />
           <Input
-            name="email"
             label="Email"
             labelPlacement="outside"
+            name="email"
             placeholder="you@example.com"
             startContent={
               <MailIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
@@ -53,24 +60,24 @@ export default function ContactForms() {
           />
         </div>
         <Input
-          name="subject"
           label="Subject"
           labelPlacement="outside"
+          name="subject"
           placeholder="Subject...."
           type="text"
           value={formData.subject}
           onChange={handleInputChange}
         />
         <Textarea
-          name="message"
           label="Message"
           labelPlacement="outside"
+          name="message"
           placeholder="Your Message...."
           rows={4}
           value={formData.message}
           onChange={handleInputChange}
         />
-        <Button type="submit" variant="shadow" color="primary">
+        <Button color="primary" type="submit" variant="shadow">
           Submit
         </Button>
       </form>

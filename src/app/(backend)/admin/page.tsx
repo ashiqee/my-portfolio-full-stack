@@ -1,11 +1,7 @@
-import React from 'react';
+import React from "react";
 
 const AdminDashboard = () => {
-    return (
-        <div>
-            My Portfolio Dashboard
-        </div>
-    );
+  return <div>My Portfolio Dashboard</div>;
 };
 
 export default AdminDashboard;

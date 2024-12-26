@@ -1,13 +1,11 @@
 import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
-
 import clsx from "clsx";
 
+import { Providers } from "./../lib/Providers/index";
 
 import { siteConfig } from "@/config/site";
 import { jetbrainsMono } from "@/config/fonts";
-
-import { Providers } from './../lib/Providers/index';
 
 export const metadata: Metadata = {
   title: {
@@ -42,11 +40,7 @@ export default function RootLayout({
         )}
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-                   
-            <main className="font-jetBrains">
-              {children}
-            </main>
-        
+          <main className="font-jetBrains">{children}</main>
         </Providers>
       </body>
     </html>

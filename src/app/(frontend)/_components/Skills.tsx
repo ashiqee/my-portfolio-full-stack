@@ -1,11 +1,11 @@
-'use client'
-import { FaHtml5 } from "react-icons/fa";
+"use client";
 import { motion } from "framer-motion";
+import { Button, Image } from "@nextui-org/react";
+
 import TextHover from "@/components/Animations/Text/TextHover";
-import { Button } from "@nextui-org/react";
 import { GithubIcon } from "@/components/icons";
 
-
+import useSkillsData from "@/hooks/useSkillsData";
 
 const skillData = [
   {
@@ -68,15 +68,15 @@ const skillData = [
     id: 15,
     img: "https://raw.githubusercontent.com/tandpfun/skill-icons/65dea6c4eaca7da319e552c09f4cf5a9a8dab2c8/icons/Vercel-Dark.svg",
   },
- 
-
 ];
 
-
-
 const Skills = () => {
+  const {skillsData}= useSkillsData()
+
+  console.log(skillsData);
+  
   return (
-    <div id="skills" className="   p-2 md:p-0 md:py-20 my-auto ">
+    <div className="   p-2 md:p-0 md:py-20 my-auto " id="skills">
       <div className="text-left  ">
         <div className="pb-10 space-y-4">
           <h2 className="text-3xl">
@@ -88,11 +88,11 @@ const Skills = () => {
           </p>
         </div>
         <div className="flex flex-wrap  gap-6 items-center justify-center">
-          {skillData.map((data) => (
-            <div className=" " key={data.id}>
+          {skillsData.map((data) => (
+            <div key={data.id} className=" ">
               <motion.div
-                initial={{ scale: 0 }}
                 animate={{ rotate: 360, scale: 1 }}
+                initial={{ scale: 0 }}
                 transition={{
                   type: "spring",
                   stiffness: 260,
@@ -100,7 +100,11 @@ const Skills = () => {
                 }}
               >
                 <div className="w-12 md:w-16">
-                  <img className="mask grayscale hover:scale-110 duration-1000 hover:grayscale-0 mask-circle object-fit" src={data.img} />
+                  <Image
+                    alt={data.img}
+                    className="mask grayscale hover:scale-110 duration-1000 hover:grayscale-0 mask-circle object-fit"
+                    src={data.img}
+                  />
                 </div>
               </motion.div>{" "}
             </div>
@@ -108,12 +112,14 @@ const Skills = () => {
 
           {/* <img className='animate-bounce ' src="https://github.com/tandpfun/skill-icons/raw/main/icons/Github-Dark.svg" alt="" /> */}
         </div>
-      
-      <Button variant="bordered" className="rounded-small shadow-md shadow-blue-700/45  my-10">
-        <GithubIcon />
-        Github</Button>
 
-      
+        <Button
+          className="rounded-small shadow-md shadow-blue-700/45  my-10"
+          variant="bordered"
+        >
+          <GithubIcon />
+          Github
+        </Button>
       </div>
     </div>
   );

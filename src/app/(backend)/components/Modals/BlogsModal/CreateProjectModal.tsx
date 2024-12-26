@@ -53,7 +53,11 @@ const CreateProjectModal = ({ setIsOpen }: { setIsOpen: any }) => {
   const handleTagKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter" || event.key === ",") {
       event.preventDefault();
-      const newTags = tagInput.split(",").map((tag) => tag.trim()).filter((tag) => tag !== "");
+      const newTags = tagInput
+        .split(",")
+        .map((tag) => tag.trim())
+        .filter((tag) => tag !== "");
+
       setTags((prevTags) => [...prevTags, ...newTags]);
       setTagInput("");
     }
@@ -66,9 +70,10 @@ const CreateProjectModal = ({ setIsOpen }: { setIsOpen: any }) => {
   const handleLinkChange = (
     index: number,
     field: "label" | "url",
-    value: string
+    value: string,
   ) => {
     const updatedLinks = [...links];
+
     updatedLinks[index][field] = value;
     setLinks(updatedLinks);
   };
@@ -90,7 +95,10 @@ const CreateProjectModal = ({ setIsOpen }: { setIsOpen: any }) => {
           rounded-xl p-6 overflow-hidden overflow-y-auto 
           bg-gray-900/95 text-white text-center"
           >
-            <button className="absolute top-4 right-4" onClick={() => setIsOpen(false)}>
+            <button
+              className="absolute top-4 right-4"
+              onClick={() => setIsOpen(false)}
+            >
               X
             </button>
             <div className="space-y-2 flex flex-col">
@@ -98,20 +106,45 @@ const CreateProjectModal = ({ setIsOpen }: { setIsOpen: any }) => {
 
               <TRForm onSubmit={onSubmit}>
                 <div className="py-3 flex gap-4">
-                  <TRInput isRequired label="Project Title" name="title" type="text" />
+                  <TRInput
+                    isRequired
+                    label="Project Title"
+                    name="title"
+                    type="text"
+                  />
                 </div>
 
                 <div className="flex py-3 gap-4 items-center">
-                  <TRInput isRequired label="Project Category" name="category" type="text" />
+                  <TRInput
+                    isRequired
+                    label="Project Category"
+                    name="category"
+                    type="text"
+                  />
                 </div>
 
                 <div className="flex py-3 gap-4 items-center">
-                  <TRInput isRequired label="Start Date" name="startDate" type="date" />
-                  <TRInput isRequired label="End Date" name="endDate" type="date" />
+                  <TRInput
+                    isRequired
+                    label="Start Date"
+                    name="startDate"
+                    type="date"
+                  />
+                  <TRInput
+                    isRequired
+                    label="End Date"
+                    name="endDate"
+                    type="date"
+                  />
                 </div>
 
                 <div className="py-1.5 flex gap-4">
-                  <TRTextarea label="Project Description" name="description" rows={4} type="text" />
+                  <TRTextarea
+                    label="Project Description"
+                    name="description"
+                    rows={4}
+                    type="text"
+                  />
                 </div>
 
                 <div className="py-1.5">
@@ -125,12 +158,17 @@ const CreateProjectModal = ({ setIsOpen }: { setIsOpen: any }) => {
                 </div>
 
                 <div className="py-1.5">
-                  <label className="block text-left mb-2 text-sm font-medium text-gray-300">Tech</label>
+                  <label
+                    className="block text-left mb-2 text-sm font-medium text-gray-300"
+                    htmlFor="tags"
+                  >
+                    Tech
+                  </label>
                   <Input
+                    placeholder="Enter tech separated by commas"
                     value={tagInput}
                     onChange={handleTagInputChange}
                     onKeyPress={handleTagKeyPress}
-                    placeholder="Enter tech separated by commas"
                   />
                   <div className="mt-2 flex flex-wrap gap-2">
                     {tags.map((tag, index) => (
@@ -151,20 +189,27 @@ const CreateProjectModal = ({ setIsOpen }: { setIsOpen: any }) => {
                 </div>
 
                 <div>
-                  <label className="block text-left mb-2 text-sm font-medium text-gray-300">
+                  <label
+                    className="block text-left mb-2 text-sm font-medium text-gray-300"
+                    htmlFor="links"
+                  >
                     Project Links
                   </label>
                   {links.map((link, index) => (
                     <div key={index} className="flex gap-2 mb-2">
                       <Input
-                        value={link.label}
-                        onChange={(e) => handleLinkChange(index, "label", e.target.value)}
                         placeholder="Link Label"
+                        value={link.label}
+                        onChange={(e) =>
+                          handleLinkChange(index, "label", e.target.value)
+                        }
                       />
                       <Input
-                        value={link.url}
-                        onChange={(e) => handleLinkChange(index, "url", e.target.value)}
                         placeholder="Link URL"
+                        value={link.url}
+                        onChange={(e) =>
+                          handleLinkChange(index, "url", e.target.value)
+                        }
                       />
                       <button
                         className="text-red-500 px-2"
@@ -174,7 +219,12 @@ const CreateProjectModal = ({ setIsOpen }: { setIsOpen: any }) => {
                       </button>
                     </div>
                   ))}
-                  <Button size="sm" variant="bordered" color="success" onClick={addLink}>
+                  <Button
+                    color="success"
+                    size="sm"
+                    variant="bordered"
+                    onClick={addLink}
+                  >
                     + Add more Link
                   </Button>
                 </div>

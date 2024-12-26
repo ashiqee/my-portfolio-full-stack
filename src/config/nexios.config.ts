@@ -4,7 +4,6 @@ import { cookies } from "next/headers";
 
 import envConfig from "./envConfig";
 
-
 // Default configuration for Nexios
 const defaultConfig: NexiosOptions = {
   baseURL: envConfig.baseApi,

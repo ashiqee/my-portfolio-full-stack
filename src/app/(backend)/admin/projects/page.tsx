@@ -1,17 +1,13 @@
-import React from 'react';
-import ProjectsPage from './_com/ProjectsPage';
-import { getAllPosts } from '@/services/PostService';
+import React from "react";
 
-const ProjectsManage = async  () => {
+import ProjectsPage from "./_com/ProjectsPage";
 
-       
-   
-    return (
-        <div>
-            <ProjectsPage/>
-
-        </div>
-    );
+const ProjectsManage = async () => {
+  return (
+    <div>
+      <ProjectsPage />
+    </div>
+  );
 };
 
 export default ProjectsManage;

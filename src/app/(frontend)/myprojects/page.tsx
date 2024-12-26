@@ -1,5 +1,3 @@
 export default function myporjects() {
-    return (
-        <div></div>
-    );
+  return <div />;
 }

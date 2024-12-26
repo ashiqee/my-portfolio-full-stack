@@ -10,30 +10,28 @@ export interface ApiResponse<T> {
   data: T;
 }
 
-
 export interface IInput {
-  variant?: "flat"|"bordered"|"faded"|'underlined';
-  size?:"sm"| "md" | "lg";
-  isRequired?:boolean;
-  type?:string;
-  label?:string;
-  name:string;
-  disable?:boolean;
-  readOnly?:boolean;
+  variant?: "flat" | "bordered" | "faded" | "underlined";
+  size?: "sm" | "md" | "lg";
+  isRequired?: boolean;
+  type?: string;
+  label?: string;
+  name: string;
+  disable?: boolean;
+  readOnly?: boolean;
 }
 export interface IRTextarea {
-  variant?: "flat"|"bordered"|"faded"|'underlined';
-  size?:"sm"| "md" | "lg";
-  isRequired?:boolean;
-  type?:string;
-  rows?:number;
-  label?:string;
-  name:string;
-  disable?:boolean;
+  variant?: "flat" | "bordered" | "faded" | "underlined";
+  size?: "sm" | "md" | "lg";
+  isRequired?: boolean;
+  type?: string;
+  rows?: number;
+  label?: string;
+  name: string;
+  disable?: boolean;
 }
 
-
-export interface IUser{
+export interface IUser {
   _id: string;
   name: string;
   role: string;
@@ -41,7 +39,7 @@ export interface IUser{
   status: string;
   mobileNumber: string;
   profilePhoto: string;
-  isVerified:boolean;
+  isVerified: boolean;
   createdAt?: string;
   updatedAt?: string;
   __v?: number;
@@ -51,19 +49,18 @@ export interface IComment {
   user: string;
   post: string;
   commentText: string;
- }
+}
 
-export interface IPost  {
+export interface IPost {
   user: string;
   title: string;
   description?: string;
   video?: string;
   images?: string[];
   isPremium: boolean;
-  upVotes: string[]; 
-  downVotes: string[]; 
+  upVotes: string[];
+  downVotes: string[];
   comments: IComment[];
-  
 }
 
 export interface ISearchResult {
@@ -83,6 +80,6 @@ export interface CategoriesResponse {
 }
 
 export interface CustomJwtPayload {
-  role?:string;
-  userEmail?:string;
+  role?: string;
+  userEmail?: string;
 }

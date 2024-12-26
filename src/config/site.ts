@@ -25,7 +25,7 @@ export const siteConfig = {
       href: "#contact",
     },
   ],
-  navMenuItems:  [
+  navMenuItems: [
     {
       label: "Home",
       href: "/",
@@ -50,9 +50,8 @@ export const siteConfig = {
   links: {
     github: "https://github.com/ashiqee",
     twitter: "https://x.com/Xashiqee",
-    docs: "https://nextui.org",
+    docs: "https://drive.google.com/file/d/1lx5Tyf_D4O4fHW2Yw6UnmOy6yx72tF5Q/view?usp=sharing",
     discord: "https://discord.gg/zQBP5Tmn",
     sponsor: "https://patreon.com/jrgarciadev",
   },
-  
 };

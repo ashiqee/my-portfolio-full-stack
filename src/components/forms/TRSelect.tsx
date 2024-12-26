@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { useFormContext } from 'react-hook-form';
-import { Select, SelectItem } from '@nextui-org/react';
+import React from "react";
+import { useFormContext } from "react-hook-form";
+import { Select, SelectItem } from "@nextui-org/react";
 
-import { IInput } from '@/types';
+import { IInput } from "@/types";
 
 interface IOption {
   label: string;
@@ -16,8 +16,8 @@ interface IProps extends IInput {
 }
 
 const TRSelect = ({
-  variant = 'bordered',
-  size = 'sm',
+  variant = "bordered",
+  size = "sm",
   isRequired = false,
   label,
   name,
@@ -36,8 +36,7 @@ const TRSelect = ({
         isInvalid={!!errors?.[name]}
         label={label}
         size={size}
-        
-        validationState={errors?.[name] ? 'invalid' : 'valid'}
+        validationState={errors?.[name] ? "invalid" : "valid"}
         variant={variant}
       >
         {options.map((option) => (

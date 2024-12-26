@@ -1,4 +1,4 @@
-import { FiFileText, FiDollarSign, FiSettings, FiShoppingCart, FiUser, FiShoppingBag, FiList, FiEye, FiClock, FiHeart, FiStar } from "react-icons/fi";
+import { FiFileText, FiSettings, FiShoppingBag } from "react-icons/fi";
 
 export const roleBasedMenus = {
   admin: [
@@ -7,7 +7,7 @@ export const roleBasedMenus = {
       label: "Dashboard",
       icon: <FiFileText />,
     },
-   
+
     {
       path: "/admin/landing-page",
       label: "Manage pages",
@@ -23,7 +23,7 @@ export const roleBasedMenus = {
       label: "Manage Blogs",
       icon: <FiShoppingBag />,
     },
-   
+
     {
       path: "/admin/profile",
       label: "My Profile",
@@ -31,5 +31,4 @@ export const roleBasedMenus = {
       description: "Platform configurations and preferences.",
     },
   ],
-  
 };

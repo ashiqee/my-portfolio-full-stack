@@ -1,43 +1,40 @@
-'use client'
-import { Textarea } from '@nextui-org/input';
-import React from 'react';
-import {useFormContext } from "react-hook-form";
+"use client";
+import { Textarea } from "@nextui-org/input";
+import React from "react";
+import { useFormContext } from "react-hook-form";
 
-import { IRTextarea } from '@/types';
+import { IRTextarea } from "@/types";
 
-interface IProps extends IRTextarea{}
+interface IProps extends IRTextarea {}
 
 const TRTextarea = ({
-    variant ='bordered',
-    size="sm",
-    isRequired=false,
-    type="text",
-    label,
-    rows,
-    name
-}:IProps) => {
+  variant = "bordered",
+  size = "sm",
+  isRequired = false,
+  type = "text",
+  label,
+  rows,
+  name,
+}: IProps) => {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
 
-
-    const {register,
-        formState:{errors},
-    }=useFormContext()
-
-    return (
-        <Textarea
-        {...register(name)}
-        errorMessage={errors?.[name]? (errors[name]?.message as string ) :""}
-        isInvalid={!!errors?.[name]}
-        isRequired={isRequired}
-        label={label}
-        name={name}
-        rows={rows}
-        size={size}
-        type={type}
-        variant={variant}
-
-
-        />
-    );
+  return (
+    <Textarea
+      {...register(name)}
+      errorMessage={errors?.[name] ? (errors[name]?.message as string) : ""}
+      isInvalid={!!errors?.[name]}
+      isRequired={isRequired}
+      label={label}
+      name={name}
+      rows={rows}
+      size={size}
+      type={type}
+      variant={variant}
+    />
+  );
 };
 
 export default TRTextarea;

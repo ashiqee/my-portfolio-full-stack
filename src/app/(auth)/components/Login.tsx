@@ -1,6 +1,5 @@
 "use client";
 import React, { Suspense, useEffect } from "react";
-
 import { Button, Card, CardBody, Link } from "@nextui-org/react";
 import { motion } from "framer-motion";
 import { FieldValues, SubmitHandler } from "react-hook-form";
@@ -8,7 +7,6 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { toast } from "sonner";
 
 import { useUser } from "@/context/user.provider";
-import loginValidation from "@/schemas/login.schema";
 import TRInput from "@/components/forms/TRInput";
 import TRForm from "@/components/forms/TRFrom";
 import { useUserLogin } from "@/hooks/auth.hook";
@@ -21,7 +19,13 @@ const LoginContent = () => {
   const searchParams = useSearchParams(); // Using useSearchParams
   const router = useRouter();
   const redirect = searchParams.get("redirect");
-  const { mutate: handleLogin, isPending, isSuccess, isError,error } = useUserLogin();
+  const {
+    mutate: handleLogin,
+    isPending,
+    isSuccess,
+    isError,
+    error,
+  } = useUserLogin();
 
   const onSubmit: SubmitHandler<FieldValues> = (data: any) => {
     handleLogin(data);
@@ -30,19 +34,18 @@ const LoginContent = () => {
 
   useEffect(() => {
     if (!isPending) {
-        if (isSuccess) {
-          if (redirect) {
-            router.push(redirect); 
-          } else {
-            router.push("/"); 
-          }
-        } else if (isError) {
-          // Handle error if login failed
-          toast.error(error?.message || "Login failed");
+      if (isSuccess) {
+        if (redirect) {
+          router.push(redirect);
+        } else {
+          router.push("/");
         }
-  
-       
-        userLoading(false);
+      } else if (isError) {
+        // Handle error if login failed
+        toast.error(error?.message || "Login failed");
+      }
+
+      userLoading(false);
     }
   }, [isPending, isSuccess, redirect, user, userLoading]);
 
@@ -85,7 +88,6 @@ const LoginContent = () => {
                   email: "admin@gmail.com",
                   password: "123456",
                 }}
-              
                 onSubmit={onSubmit}
               >
                 <div className="py-3">
@@ -105,10 +107,11 @@ const LoginContent = () => {
                     Login
                   </Button>
                 </div>
-              
               </TRForm>
 
-              <Link className="text-center" href="/reset-password">Forgot password?</Link>
+              <Link className="text-center" href="/reset-password">
+                Forgot password?
+              </Link>
             </CardBody>
           </Card>
         </motion.div>

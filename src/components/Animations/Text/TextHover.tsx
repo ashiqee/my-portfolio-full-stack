@@ -14,6 +14,7 @@ const TextHover: React.FC<TextHoverProps> = ({ children }) => {
   return (
     <div className="hover-text" style={{ color: textColor }}>
       <TypeAnimation
+        repeat={Infinity}
         sequence={[
           `${children}`,
           800,
@@ -26,7 +27,6 @@ const TextHover: React.FC<TextHoverProps> = ({ children }) => {
           () => setTextColor("darkkhaki"),
           "",
         ]}
-        repeat={Infinity}
       />
     </div>
   );

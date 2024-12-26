@@ -3,9 +3,6 @@ import { cookies } from "next/headers";
 
 import { getNewAccessToken } from "@/services/AuthService";
 
-
-
-
 const axiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BASE_API,
 });
@@ -23,7 +20,7 @@ axiosInstance.interceptors.request.use(
   },
   function (error) {
     return Promise.reject(error);
-  }
+  },
 );
 
 axiosInstance.interceptors.response.use(
@@ -45,7 +42,7 @@ axiosInstance.interceptors.response.use(
     } else {
       return Promise.reject(error);
     }
-  }
+  },
 );
 
 export default axiosInstance;

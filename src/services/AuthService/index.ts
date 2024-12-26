@@ -4,24 +4,25 @@ import { cookies } from "next/headers";
 import { FieldValues } from "react-hook-form";
 import { jwtDecode } from "jwt-decode";
 import { redirect } from "next/navigation";
+
 import nexiosInstance from "@/config/nexios.config";
-
-
 
 // registration part
 
-interface AuthResponse{
-    success:boolean;
-    data:{
-        accessToken:string;
-        refreshToken:string;
-    }
+interface AuthResponse {
+  success: boolean;
+  data: {
+    accessToken: string;
+    refreshToken: string;
+  };
 }
 
 export const registerUser = async (userData: FieldValues) => {
   try {
-    const { data } = await nexiosInstance.post<AuthResponse>("/auth/register", userData);
-
+    const { data } = await nexiosInstance.post<AuthResponse>(
+      "/auth/register",
+      userData,
+    );
 
     if (data.success) {
       (await cookies()).set("accessToken", data?.data?.accessToken);
@@ -36,7 +37,10 @@ export const registerUser = async (userData: FieldValues) => {
 
 export const loginUser = async (userData: FieldValues) => {
   try {
-    const { data } = await nexiosInstance.post<AuthResponse>("/auth/login", userData);
+    const { data } = await nexiosInstance.post<AuthResponse>(
+      "/auth/login",
+      userData,
+    );
 
     if (data.success) {
       (await cookies()).set("accessToken", data?.data?.accessToken);
@@ -52,7 +56,7 @@ export const loginUser = async (userData: FieldValues) => {
 export const logout = async () => {
   (await cookies()).delete("accessToken");
   (await cookies()).delete("refreshToken");
-  redirect('/login')
+  redirect("/login");
 };
 
 // get current user
@@ -73,7 +77,7 @@ export const getCurrentUser = async () => {
       role: decodedToken.role,
       status: decodedToken.status,
       profilePhoto: decodedToken.profilePhoto,
-      isVerified: decodedToken.isVerified
+      isVerified: decodedToken.isVerified,
     };
   }
 
@@ -94,7 +98,7 @@ export const getNewAccessToken = async () => {
         headers: {
           cookies: `refreshToken=${refreshToken}`,
         },
-      }
+      },
     );
 
     return res.data;
@@ -103,25 +107,15 @@ export const getNewAccessToken = async () => {
   }
 };
 
-
-export const changePassword = async(updatePassword:FieldValues)=>{
-
-  try{
-    
-
-    
-    const res = await nexiosInstance.post<any>('/auth/change-password',{
-      "oldPassword":updatePassword.oldPassword,
-      "newPassword":updatePassword.newPassword,
-    },
-    
-        )
-
+export const changePassword = async (updatePassword: FieldValues) => {
+  try {
+    const res = await nexiosInstance.post<any>("/auth/change-password", {
+      oldPassword: updatePassword.oldPassword,
+      newPassword: updatePassword.newPassword,
+    });
 
     return res.data;
-
-  }catch(error:any){
-    throw new Error(error)
+  } catch (error: any) {
+    throw new Error(error);
   }
-
-}
+};

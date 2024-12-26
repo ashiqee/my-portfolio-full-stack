@@ -7,7 +7,6 @@ import {
   NavbarItem,
   NavbarMenuItem,
 } from "@nextui-org/navbar";
-import { Button } from "@nextui-org/button";
 import { Kbd } from "@nextui-org/kbd";
 import { Link } from "@nextui-org/link";
 import { Input } from "@nextui-org/input";
@@ -21,7 +20,6 @@ import {
   TwitterIcon,
   GithubIcon,
   DiscordIcon,
-  HeartFilledIcon,
   SearchIcon,
   Logo,
 } from "@/components/icons";
@@ -49,26 +47,30 @@ export const Navbar = () => {
   );
 
   return (
-    <NextUINavbar className="bg-gradient-to-bl from-amber-100/45 dark:from-sky-500/35 h-20 dark:to-slate-900/5" maxWidth="xl" position="sticky">
+    <NextUINavbar
+      className="bg-gradient-to-bl from-amber-100/45 dark:from-sky-500/35 h-20 dark:to-slate-900/5"
+      maxWidth="xl"
+      position="sticky"
+    >
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <NextLink className="flex justify-start items-center gap-1" href="/">
             <Logo />
             <div className=" relative ">
-            <h1 className="font-bold  text-3xl text-inherit">ASHIQ</h1>
-            <small className="text-[9px] dark:text-sky-100/75  absolute top-6 right-0">web developer</small>
+              <h1 className="font-bold  text-3xl text-inherit">ASHIQ</h1>
+              <small className="text-[9px] dark:text-sky-100/75  absolute top-6 right-0">
+                web developer
+              </small>
             </div>
           </NextLink>
         </NavbarBrand>
-       
       </NavbarContent>
 
       <NavbarContent
         className="hidden sm:flex basis-1/5 sm:basis-full"
         justify="end"
       >
-
-<ul className="hidden lg:flex gap-4 justify-start ml-2">
+        <ul className="hidden lg:flex gap-4 justify-start ml-2">
           {siteConfig.navItems.map((item) => (
             <NavbarItem key={item.href}>
               <NextLink
@@ -97,8 +99,6 @@ export const Navbar = () => {
           </Link>
           <ThemeSwitch />
         </NavbarItem>
-     
-        
       </NavbarContent>
 
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">

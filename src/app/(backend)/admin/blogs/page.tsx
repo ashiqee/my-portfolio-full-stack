@@ -1,11 +1,7 @@
-import React from 'react';
+import React from "react";
 
 const BlogsManage = () => {
-    return (
-        <div>
-            Blog Manage
-        </div>
-    );
+  return <div>Blog Manage</div>;
 };
 
 export default BlogsManage;
