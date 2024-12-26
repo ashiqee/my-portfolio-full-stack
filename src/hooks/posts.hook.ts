@@ -6,7 +6,7 @@ import { createAComment, createAPost, getAllPosts, updateAPost } from "@/service
 
 
 export const useCreatePosts =()=>{
-    return useMutation<any,Error,FieldValues>({
+    return useMutation<any,Error,FieldValues >({
         mutationKey: ['posts'],
         mutationFn: async (postData)=> await createAPost(postData),
         onSuccess:(res)=>{

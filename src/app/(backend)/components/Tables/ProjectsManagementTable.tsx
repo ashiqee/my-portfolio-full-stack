@@ -4,88 +4,22 @@ import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Image,
 import { ArrowDownWideNarrowIcon } from 'lucide-react';
 
 
-
-import CreateProductModal from '../Modals/BlogsModal/CreateProjectModal';
 import ProductDropDownAction from '../Dropdown/ProductDropDownAction';
-
-import useDebounce from '@/hooks/useDebounce';
-import { useGetAllVendorMyShops } from '@/hooks/shops.hook';
-import { useGetAllCategoriesForPublic } from '@/hooks/categories.hook';
-import { useGetAllProductsMyShops } from '@/hooks/products.hook';
-
-
-interface QueryState {
-  sortBy?: string;
-  sortOrder?: 'asc' | 'desc';
-  page?: number;
-  limit?: number;
-  searchTerm?: string;
-}
-
-const ProductsManagementTable = () => {
-  const [query, setQuery] = useState<QueryState>({
-    sortBy: 'createdAt',
-    sortOrder: 'asc',
-    page: 1,
-    limit: 10,
-    searchTerm: '',
- });
-
-  const { data: vendorResults, isLoading: vendorLoading } = useGetAllVendorMyShops(query);
-  const { data: productsResults, isLoading } = useGetAllProductsMyShops(query);
-
-  const { data: catResults, isLoading:catLoading } = useGetAllCategoriesForPublic();
-  const [page, setPage] = useState(1); 
-  const [limit] = useState(5); 
-  const [total, setTotal] = useState(0); 
-  const [sortBy, setSortBy] = useState('createdAt');
-  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
-  const [searchTerm, setSearchTerm] = useState<string | undefined>();
-  const debouncedSearchTerm = useDebounce(searchTerm);
-  const [isAddOpen,setIsAddOpen]=useState(false)
-
-
-  useEffect(() => {
-    // Update the query when page, limit, sortBy, or sortOrder changes
-    setQuery((prev) => ({
-      ...prev,
-      page,
-      limit,
-      sortBy,
-      sortOrder,
-    }));
-  }, [page, limit, sortBy, sortOrder]);
-
-
-  useEffect(() => {
-    // Update the query with the debounced searchTerm
-    setQuery((prev) => ({ ...prev, searchTerm: debouncedSearchTerm }));
-  }, [debouncedSearchTerm]);
+import useDebounce from '@/hooks/debounce.hook';
 
 
 
-  const products = productsResults?.data?.vendorAllProducts || [];
-  const shops = vendorResults?.data?.shops || [];
-  const categories = catResults?.data || [];
-  const totalProducts = productsResults?.data?.paginateData?.total || 0;
+
+const ProjectsManagementTable = () => {
 
 
-  console.log(products)
+const projects = [];
 
-  useEffect(() => {
-    // Update total pages when results change
-    setTotal(Math.ceil(totalProducts / limit));
-  }, [totalProducts, limit]);
+
 
   return (
     <>
-     {
-            isAddOpen && <CreateProductModal 
-            categories={categories} 
-            setIsOpen={setIsAddOpen}
-            shops={shops}
-            />
-        }
+   
       <form className='flex justify-between '>
       <div className='flex gap-2 items-center'>
        <Input
@@ -124,9 +58,9 @@ const ProductsManagementTable = () => {
         </Dropdown>
         </div>
       </form>
-   {isLoading && <p>Loading...</p>}
+  
 
-{products.length > 0 &&  <>
+{projects.length > 0 &&  <>
 
    
   <Table aria-label="Products Management Table">
@@ -142,7 +76,7 @@ const ProductsManagementTable = () => {
           <TableColumn>Action</TableColumn>
         </TableHeader>
         <TableBody >
-          {products?.map((product: any, i: number) => (
+          {projects?.map((product: any, i: number) => (
             <TableRow key={product.id} className='bg-slate-800/15 rounded-md hover:bg-slate-700/10 hover:rounded-md'>
               <TableCell>{(page - 1) * limit + i + 1}</TableCell>
               <TableCell>
@@ -160,12 +94,7 @@ const ProductsManagementTable = () => {
               <TableCell>{product.status}</TableCell>
               <TableCell>
                     {/* action modal  */}
-              <ProductDropDownAction 
-              categories={categories}
-              data={product}
-              id={product.id}
-              shops={shops}
-              />
+             Edit
               </TableCell>
             </TableRow>
           ))}
@@ -173,7 +102,7 @@ const ProductsManagementTable = () => {
       </Table>
       <div className="py-2  flex justify-between items-center">
         <p>
-          Total Products : {totalProducts}
+          Total Products : {0}
         </p>
         <Pagination 
        
@@ -191,4 +120,4 @@ const ProductsManagementTable = () => {
   );
 };
 
-export default ProductsManagementTable;
+export default ProjectsManagementTable;

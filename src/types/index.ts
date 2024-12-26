@@ -4,6 +4,12 @@ export type IconSvgProps = SVGProps<SVGSVGElement> & {
   size?: number;
 };
 
+export interface ApiResponse<T> {
+  success: boolean;
+  message: string;
+  data: T;
+}
+
 
 export interface IInput {
   variant?: "flat"|"bordered"|"faded"|'underlined';

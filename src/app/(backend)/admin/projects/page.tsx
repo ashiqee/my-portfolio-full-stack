@@ -1,9 +1,15 @@
 import React from 'react';
+import ProjectsPage from './_com/ProjectsPage';
+import { getAllPosts } from '@/services/PostService';
 
-const ProjectsManage = () => {
+const ProjectsManage = async  () => {
+
+       
+   
     return (
         <div>
-            Project Manage
+            <ProjectsPage/>
+
         </div>
     );
 };

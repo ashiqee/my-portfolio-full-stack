@@ -3,8 +3,9 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardFooter, Image, Button } from '@nextui-org/react';
+import Link from 'next/link';
 
-const ProjectCards = () => {
+const ProjectCards = ({project}:{project:any}) => {
   const [isHovering, setIsHovering] = useState(false);
 
   return (
@@ -25,9 +26,9 @@ const ProjectCards = () => {
           >
             <Image
               removeWrapper
-              alt="Relaxing app background"
+              alt={project.title}
               className="z-0 w-full rounded-xl h-full object-cover"
-              src="https://cdn.kwork.com/files/portfolio/t0/50/9f4deb8c02fe2bf933f540a1d094dee1d30d15c2-1701683773.webp"
+              src={project.images[0]}
             />
           </motion.div>
           <motion.div
@@ -39,21 +40,46 @@ const ProjectCards = () => {
             <CardFooter className="flex flex-col  gap-3">
               <div className="w-full h-full">
                 <div className="flex flex-col">
-                  <p className="text-xl">Breathing App</p>
+                  <p className="text-xl">{project.title}</p>
                   <p className="text-tiny  text-white/60">
-                    A brief description of Project One. This is a short description.
+                   {project.description.slice(0, 100)}
                   </p>
                 </div>
               </div>
               <div className="flex w-full pb-2 gap-2 justify-between items-center">
-                <p className="text-tiny">Jan-2023 - May-2023</p>
+                
+              {
+                project.startDate && <p className="text-tiny">
+                {new Intl.DateTimeFormat("en-US", { month: "short", year: "numeric" }).format(new Date(project.startDate))} 
+                
+                - 
+
+                {new Intl.DateTimeFormat("en-US", { month: "short", year: "numeric" }).format(new Date(project.endDate))}
+              </p>
+              
+              }
                 <div className="flex gap-2">
-                  <Button className="hover:bg-slate-800 text-white" variant="bordered" radius="sm" size="sm">
+
+                  {
+                    project.links && <>
+                    
+                    {
+                      project.links?.map((link:any,i:number)=>(
+                        <Link key={i} href={link.url} target="_blank" rel="noopener noreferrer"
+                         className="hover:bg-slate-800 text-[10px] p-1.5 px-2 border rounded-md  text-white">
+                          
+                          {link.label}</Link>) 
+                      )
+                    }
+                    
+                    </>
+                  }
+                  {/* <Button className="hover:bg-slate-800 text-white" variant="bordered" radius="sm" size="sm">
                     Github link
                   </Button>
                   <Button className="hover:bg-slate-800 text-white" variant="bordered" radius="sm" size="sm">
                     Live link
-                  </Button>
+                  </Button> */}
                 </div>
               </div>
             </CardFooter>

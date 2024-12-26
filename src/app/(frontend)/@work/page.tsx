@@ -2,8 +2,13 @@
 import React from 'react';
 import ProjectCards from '../_components/cards/ProjectCards';
 import TextHover from '@/components/Animations/Text/TextHover';
+import { getAllProjects } from '@/services/ProjectService';
 
-const WorkSection = () => {
+const WorkSection = async () => {
+    const res = await getAllProjects()
+
+   const projects = res.data.data;
+    
     return (
         <div className='mx-6  2xl:mx-0'>
         <div className='my-10'>
@@ -16,9 +21,9 @@ const WorkSection = () => {
         <div className='grid grid-cols-1 md:grid-cols-3  gap-6'>
 
         {
-                [...Array(6)].map((_, i) => (<div key={i}>
+                projects?.map((project:any, i:number) => (<div key={i}>
 
-                    <ProjectCards/>
+                    <ProjectCards project={project}/>
                 </div>))
             }
         </div>
