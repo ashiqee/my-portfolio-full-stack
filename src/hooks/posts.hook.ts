@@ -4,6 +4,7 @@ import { toast } from "sonner";
 
 import { createAComment, createAPost, getAllPosts, updateAPost } from "@/services/PostService";
 import { revalidateTag } from "next/cache";
+import { useRouter } from "next/navigation";
 
 
 export const useCreatePosts =()=>{
@@ -24,13 +25,16 @@ export const useCreatePosts =()=>{
 
 export const useUpdatePost =()=>{
     const queryClient = useQueryClient();
+    const router = useRouter()
     return useMutation<any,Error,FieldValues>({
         mutationKey: ['posts'],
         mutationFn: async (postData)=> await updateAPost(postData),
         onSuccess:(res)=>{
                      
             toast.success(res.message);
-            revalidateTag('posts')
+            router.push('/admin/projects');
+           
+         
         
         },
         onError:(error)=>{

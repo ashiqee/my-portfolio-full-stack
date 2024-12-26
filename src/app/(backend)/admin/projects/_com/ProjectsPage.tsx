@@ -68,7 +68,34 @@ const handleEditModal = (data:any) => {
                     
                     {link.label}
 
-                </Link>))}</p>
+                </Link>))}</p> 
+
+               {
+                 project.startDate &&  <div>
+                 <p>
+  Start Date:{" "}
+  {new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    year: "numeric",
+  }).format(new Date(project.startDate))}
+</p>
+<p>
+  End Date:{" "}
+  {new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    year: "numeric",
+  }).format(new Date(project.endDate))}
+</p>
+<p>
+  Duration:{" "}
+  {Math.ceil(
+    (new Date(project.endDate).getTime() - new Date(project.startDate).getTime()) /
+      (1000 * 60 * 60 * 24)
+  )}{" "}
+  days
+</p>
+                 </div>
+               }
                </div>
 
                <div className='flex gap-2'>

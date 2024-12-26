@@ -1,6 +1,12 @@
+"use client"
+import { useUser } from "@/context/user.provider";
 import React from "react";
 
 const PortfolioFooter = () => {
+  const {user} = useUser()
+
+  console.log(user);
+  
   return (
     <footer className="bg-gray-800  text-gray-300">
       <div className="container max-w-7xl mx-auto py-8">
@@ -33,9 +39,13 @@ const PortfolioFooter = () => {
                 </a>
               </li>
               <li>
-                <a href="/login" className="hover:text-gray-100 transition-colors">
-                  login
-                </a>
+              {
+                user ? <a href={`/${user.role?.toLocaleLowerCase()}/dashboard`} className="hover:text-gray-100 transition-colors">
+                Dashboard
+              </a> : <a href="/login" className="hover:text-gray-100 transition-colors">
+                Login
+              </a>
+              }
               </li>
             </ul>
           </div>

@@ -3,7 +3,8 @@ import React from 'react';
 import ProjectCards from '../_components/cards/ProjectCards';
 import TextHover from '@/components/Animations/Text/TextHover';
 import { getAllProjects } from '@/services/ProjectService';
-import { Link } from '@nextui-org/react';
+import Link from 'next/link';
+
 
 const WorkSection = async () => {
     const res = await getAllProjects()
@@ -20,7 +21,7 @@ const WorkSection = async () => {
           <p>Explore some of my latest full-stack projects, highlighting the technologies used and their unique features.</p>
        
         </div>
-        <div className='grid grid-cols-1 md:grid-cols-3  gap-6'>
+        <div className='grid grid-cols-1 md:grid-cols-3 mb-10 gap-6'>
 
         {
                 projects?.slice(0,6).map((project:any, i:number) => (<div key={i}>
@@ -29,8 +30,8 @@ const WorkSection = async () => {
                 </div>))
             }
 
-            <Link href={"/projects"}>Show more projects</Link>
         </div>
+            <Link className='text-center border-1 p-2 mt-20 border-slate-200/25 rounded-md' href={"/projects"}>Show more projects</Link>
         </div>
     );
 };

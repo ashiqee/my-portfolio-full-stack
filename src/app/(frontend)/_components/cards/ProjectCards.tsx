@@ -3,9 +3,11 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardFooter, Image, Button } from '@nextui-org/react';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+
 
 const ProjectCards = ({project}:{project:any}) => {
+  const router = useRouter()
   const [isHovering, setIsHovering] = useState(false);
 
   return (
@@ -14,7 +16,7 @@ const ProjectCards = ({project}:{project:any}) => {
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
         whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.5 }}
+        // whileTap={{ scale: 0.5 }}
         className="w-full h-[320px] col-span-12 sm:col-span-7"
       >
         <Card isFooterBlurred className="relative w-full h-full">
@@ -64,22 +66,16 @@ const ProjectCards = ({project}:{project:any}) => {
                     project.links && <>
                     
                     {
-                      project.links?.map((link:any,i:number)=>(
-                        <Link key={i} href={link.url} target="_blank" rel="noopener noreferrer"
-                         className="hover:bg-slate-800 text-[10px] p-1.5 px-2 border rounded-md  text-white">
-                          
-                          {link.label}</Link>) 
+                      project.links?.map((link:any,i:number)=>(<Button onPress={() => router.push(link.url)} key={i} className="hover:bg-slate-800 text-white" variant="bordered" radius="sm" size="sm">
+                        {link.label}
+                      </Button>) 
                       )
                     }
+                   
                     
                     </>
                   }
-                  {/* <Button className="hover:bg-slate-800 text-white" variant="bordered" radius="sm" size="sm">
-                    Github link
-                  </Button>
-                  <Button className="hover:bg-slate-800 text-white" variant="bordered" radius="sm" size="sm">
-                    Live link
-                  </Button> */}
+                 
                 </div>
               </div>
             </CardFooter>

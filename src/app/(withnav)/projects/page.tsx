@@ -1,8 +1,9 @@
 
 import React from 'react';
-import ProjectCards from '../_components/cards/ProjectCards';
+
 import TextHover from '@/components/Animations/Text/TextHover';
 import { getAllProjects } from '@/services/ProjectService';
+import ProjectCards from '@/app/(frontend)/_components/cards/ProjectCards';
 
 const AllProjects = async () => {
     const res = await getAllProjects()

@@ -1,4 +1,7 @@
+"use server"
 import envConfig from "@/config/envConfig";
+import nexiosInstance from "@/config/nexios.config";
+import { cookies } from "next/headers";
 
 
 
@@ -15,3 +18,8 @@ export const getAllProjects = async () => {
     revalidate: 10, // Optional: ISR - Revalidate every 10 seconds
   };
 };
+
+
+
+
+

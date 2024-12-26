@@ -10,6 +10,7 @@ import axiosInstance from "@/lib/AxiosInstance";
 
 import {  ApiResponse, IPost } from "@/types";
 import nexiosInstance from "@/config/nexios.config";
+import { getAllProjects } from "../ProjectService";
 
 
 
@@ -57,6 +58,7 @@ export const updateAPost = async (formData: FieldValues) => {
     );
 
     revalidateTag("posts");
+    
 
     return data;
   } catch (error: any) {
@@ -79,9 +81,6 @@ export const getAllPosts = async (query: Record<string, any>) => {
     throw new Error('Failed to fetch posts');
   }
 
-
-  console.log("API>>",res);
-  
 
   return res.data;
 };

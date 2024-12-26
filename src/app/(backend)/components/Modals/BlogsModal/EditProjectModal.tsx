@@ -7,6 +7,7 @@ import TRInput from "@/components/forms/TRInput";
 import TRTextarea from "@/components/forms/TRTextarea";
 import { useCreatePosts, useUpdatePost } from "@/hooks/posts.hook";
 
+
 const EditProjectModal = ({ setIsOpen,exitsData }: { setIsOpen: any,exitsData:any }) => {
   const [images, setImages] = useState<File[]>([]);
   const [tags, setTags] = useState<string[]>(exitsData.tags);
@@ -35,6 +36,7 @@ const EditProjectModal = ({ setIsOpen,exitsData }: { setIsOpen: any,exitsData:an
       formData.append("files", file);
     });
 
+    
     updateProjectMutation.mutate(formData);
     setIsOpen(false);
   };
@@ -93,7 +95,7 @@ const EditProjectModal = ({ setIsOpen,exitsData }: { setIsOpen: any,exitsData:an
               X
             </button>
             <div className="space-y-2 flex flex-col">
-              <h2 className="text-xl font-semibold">Add New Project</h2>
+              <h2 className="text-xl font-semibold">Update Project</h2>
 
               <TRForm 
               
@@ -109,13 +111,18 @@ const EditProjectModal = ({ setIsOpen,exitsData }: { setIsOpen: any,exitsData:an
                   <TRInput isRequired label="Project Title" name="title" type="text" />
                 </div>
 
-                <div className="flex py-3 gap-4 items-center">
-                  <TRInput isRequired label="Project Category" name="category" type="text" />
-                </div>
-
-                <div className="flex py-3 gap-4 items-center">
-                  <TRInput isRequired label="Start Date" name="startDate" type="date" />
-                  <TRInput isRequired label="End Date" name="endDate" type="date" />
+                <div className="flex w-full py-3 gap-4 items-center">
+                 <div className="mt-5 w-full">
+                 <TRInput isRequired label="Project Category" name="category" type="text" />
+                 </div>
+                 <div className="w-full">
+                 <label htmlFor="startDate"> {new Intl.DateTimeFormat("en-US", { month: "short", year: "numeric" }).format(new Date(exitsData.startDate))} </label>
+                 <TRInput  label="Start Date" name="startDate" type="date" />
+                 </div>
+                  <div className="w-full">
+                  <label htmlFor="endDate"> {new Intl.DateTimeFormat("en-US", { month: "short", year: "numeric" }).format(new Date(exitsData.startDate))} </label>
+                  <TRInput  label="End Date" name="endDate" type="date" />
+                  </div>
                 </div>
 
                 <div className="py-1.5 flex gap-4">
