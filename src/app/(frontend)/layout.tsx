@@ -1,5 +1,6 @@
 
 import { Navbar } from "@/components/navbar";
+import PortfolioFooter from "./_components/Footer";
 
 
 export default function FrontLayout({
@@ -34,7 +35,7 @@ export default function FrontLayout({
             </section>
           </div>
         </div>
-      
+        <PortfolioFooter/>
       </div>
     </>
   );

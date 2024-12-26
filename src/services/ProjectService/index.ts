@@ -3,7 +3,11 @@ import envConfig from "@/config/envConfig";
 
 
 export const getAllProjects = async () => {
-  const response = await fetch(`${envConfig.baseApi}/posts`);
+  const response = await fetch(`${envConfig.baseApi}/posts`,
+    {
+      cache: "no-store",
+    }
+  );
   const data = await response.json();
 
   return {

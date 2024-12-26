@@ -1,8 +1,9 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { FieldValues } from "react-hook-form";
 import { toast } from "sonner";
 
 import { createAComment, createAPost, getAllPosts, updateAPost } from "@/services/PostService";
+import { revalidateTag } from "next/cache";
 
 
 export const useCreatePosts =()=>{
@@ -22,12 +23,15 @@ export const useCreatePosts =()=>{
 
 
 export const useUpdatePost =()=>{
+    const queryClient = useQueryClient();
     return useMutation<any,Error,FieldValues>({
         mutationKey: ['posts'],
         mutationFn: async (postData)=> await updateAPost(postData),
         onSuccess:(res)=>{
                      
             toast.success(res.message);
+            revalidateTag('posts')
+        
         },
         onError:(error)=>{
             toast.error(error.message)

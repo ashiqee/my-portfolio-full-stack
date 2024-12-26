@@ -44,8 +44,7 @@ export const updateAPost = async (formData: FieldValues) => {
  const parsedData = JSON.parse(dataField as string);
  const { postId } = parsedData;
 
-  //  console.log("ID>>",postId, "upp>>",updateData);
-   
+ 
 
     const { data } = await axiosInstance.patch<any>(
       `/posts/update-post/${postId}`,
