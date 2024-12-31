@@ -100,7 +100,7 @@ const EducationSlider = () => {
                   </div>
                 </div>
                 <p className="text-[10px] md:text-sm ">{item.institute}</p>
-                <p className="text-[10px] max-w-[250px] md:text-sm ">
+                <p className="text-[10px] pr-8  md:text-sm ">
                   {item.description}
                 </p>
               </div>

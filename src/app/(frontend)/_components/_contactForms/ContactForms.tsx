@@ -4,6 +4,7 @@ import { Button, Input, Textarea } from "@nextui-org/react";
 import { useState } from "react";
 
 import { MailIcon } from "@/components/forms/icons/MailIcons";
+import PRButton from "@/components/ui/PRButton";
 
 export default function ContactForms() {
   const [formData, setFormData] = useState({
@@ -77,9 +78,9 @@ export default function ContactForms() {
           value={formData.message}
           onChange={handleInputChange}
         />
-        <Button color="primary" type="submit" variant="shadow">
-          Submit
-        </Button>
+       
+        <PRButton txt="Submit" type="submit" variant="shadow" />
+       
       </form>
     </>
   );

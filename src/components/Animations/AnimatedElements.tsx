@@ -24,7 +24,7 @@ export default function AnimatedElements() {
 
   return (
     <div
-      className="absolute hidden md:block z-0 w-full h-screen"
+      className="absolute  overflow-hidden hidden md:block z-0 w-full h-screen"
       style={backgroundStyle}
     >
       {/* Element 1 */}
@@ -33,7 +33,7 @@ export default function AnimatedElements() {
           rotate: 360, // Continuous rotation
           x: [0, 300, 0], // Move horizontally across the screen
         }}
-        className="absolute z-0 bottom-40 right-4 transform -translate-x-1/2 bg-blue-400 p-6 w-12 h-12 rounded-full"
+        className="absolute z-0 bottom-52 left-60 transform -translate-x-1/2 bg-blue-400/45 p-6 w-12 h-12 rounded-full"
         transition={{
           duration: 1,
           ease: "easeInOut",
@@ -92,7 +92,7 @@ export default function AnimatedElements() {
           y: [0, -100, 0], // Move vertically
           x: [0, -300, 0], // Move left and right
         }}
-        className="absolute z-0 top-80 left-1/4 transform -translate-x-1/2 bg-red-400 p-6 w-12 h-12 rounded-full"
+        className="absolute z-0 bottom-72 left-1/4 transform -translate-x-1/2 bg-red-400 p-6 w-12 h-12 rounded-full"
         transition={{
           duration: 5,
           ease: "easeInOut",

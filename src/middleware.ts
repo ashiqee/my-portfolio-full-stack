@@ -2,12 +2,12 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { getCurrentUser } from "./services/AuthService";
 
-const authRoutes = ["/login", "/register"];
+const authRoutes = ["/login", "/register",];
 
 type Role = keyof typeof roleBasedRoutes;
 
 const roleBasedRoutes = {
-  ADMIN: [/^\/admin/, /^\/profile/],
+  ADMIN: [/^\/admin/, /^\/dashboard/],
   USER: [/^\/user/, /^\/profile/],
 };
 
@@ -40,5 +40,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/login", "/register", "/dashboard/:path*"],
+  matcher: ["/login", "/register", "/admin/:path*"],
 };

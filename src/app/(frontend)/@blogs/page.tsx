@@ -14,7 +14,7 @@ const WorkSection = async () => {
 
 
   return (
-    <div className="mx-6  2xl:mx-0">
+    <div className="mx-6 my-20 relative z-20  2xl:mx-0">
       <div className="my-10">
         <h2 className="text-3xl">
           <TextHover>Some Write blogs.!</TextHover>

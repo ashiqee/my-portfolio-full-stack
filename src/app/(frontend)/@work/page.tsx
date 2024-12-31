@@ -5,6 +5,7 @@ import ProjectCards from "../_components/cards/ProjectCards";
 
 import TextHover from "@/components/Animations/Text/TextHover";
 import { getAllProjects } from "@/services/ProjectService";
+import AnimatedElements from "@/components/Animations/AnimatedElements";
 
 const WorkSection = async () => {
   const res = await getAllProjects();
@@ -12,6 +13,7 @@ const WorkSection = async () => {
   const projects = res.data.data;
 
   return (
+    <div className="relative">
     <div className="mx-6  2xl:mx-0">
       <div className="my-10">
         <h2 className="text-3xl">
@@ -35,6 +37,8 @@ const WorkSection = async () => {
       >
         Show more projects
       </Link>
+    </div>
+       <AnimatedElements />
     </div>
   );
 };

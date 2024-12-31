@@ -38,7 +38,7 @@ const LoginContent = () => {
         if (redirect) {
           router.push(redirect);
         } else {
-          router.push("/");
+          router.push("/admin/dashboard");
         }
       } else if (isError) {
         // Handle error if login failed
@@ -60,7 +60,7 @@ const LoginContent = () => {
           muted
           className="absolute top-0 left-0 w-full h-full object-cover z-0"
         >
-          <source src="/video/bg_video.mp4" type="video/mp4" />
+          <source src="/video/bg.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         <motion.div

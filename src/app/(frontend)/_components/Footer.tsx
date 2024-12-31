@@ -9,8 +9,8 @@ const PortfolioFooter = () => {
   console.log(user);
 
   return (
-    <footer className="bg-gray-800  text-gray-300">
-      <div className="container max-w-7xl mx-auto py-8">
+    <footer className="bg-gradient-to-bl from-amber-100/45 dark:from-sky-500/35  dark:to-slate-900/5">
+      <div className="container px-6  max-w-7xl md:mx-auto py-8">
         <div className="grid w-full justify-between  grid-cols-1 md:grid-cols-3 gap-8">
           {/* About Section */}
           <div>

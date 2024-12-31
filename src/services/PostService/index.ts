@@ -73,14 +73,14 @@ export const getAllPosts = async (query: Record<string, any>) => {
 };
 
 // get single post details
-export const getAPostsDetails = async (id: Record<string, any>) => {
-  const { data } = await axiosInstance.get(`/posts/${id}`);
+export const getAPostsDetails = async (id:string) => {
+  const res = await axiosInstance.get(`/posts/${id}`);
 
-  if (!data.success) {
-    throw new Error("Failed to fetch posts");
-  }
+  // if (!res.success) {
+  //   throw new Error("Failed to fetch posts");
+  // }
 
-  return data;
+  return res.data;
 };
 
 // delete single post

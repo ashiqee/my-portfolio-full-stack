@@ -7,6 +7,7 @@ import Skills from "../_components/Skills";
 import Education from "../_components/Education";
 
 import { title } from "@/components/primitives";
+import AnimatedElements from "@/components/Animations/AnimatedElements";
 
 const AboutSection = () => {
   return (
@@ -66,6 +67,7 @@ const AboutSection = () => {
       <section>
         <Education />
       </section>
+       <AnimatedElements />
     </div>
   );
 };
