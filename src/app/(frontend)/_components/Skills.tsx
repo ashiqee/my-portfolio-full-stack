@@ -4,7 +4,6 @@ import { Button, Image } from "@nextui-org/react";
 
 import TextHover from "@/components/Animations/Text/TextHover";
 import { GithubIcon } from "@/components/icons";
-
 import useSkillsData from "@/hooks/useSkillsData";
 
 const skillData = [
@@ -71,10 +70,10 @@ const skillData = [
 ];
 
 const Skills = () => {
-  const {skillsData}= useSkillsData()
+  const { skillsData } = useSkillsData();
 
   console.log(skillsData);
-  
+
   return (
     <div className="   p-2 md:p-0 md:py-20 my-auto " id="skills">
       <div className="text-left  ">

@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Input, Textarea } from "@nextui-org/react";
+import { Input, Textarea } from "@nextui-org/react";
 import { useState } from "react";
 
 import { MailIcon } from "@/components/forms/icons/MailIcons";
@@ -78,9 +78,8 @@ export default function ContactForms() {
           value={formData.message}
           onChange={handleInputChange}
         />
-       
+
         <PRButton txt="Submit" type="submit" variant="shadow" />
-       
       </form>
     </>
   );

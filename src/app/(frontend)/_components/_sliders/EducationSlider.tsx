@@ -1,10 +1,11 @@
 "use client";
 
-import useEducationData from "@/hooks/useEducationData";
 import React, { useState } from "react";
 
+import useEducationData from "@/hooks/useEducationData";
+
 const EducationSlider = () => {
-  const {educationData} = useEducationData();
+  const { educationData } = useEducationData();
   // const educationData = [
   //   {
   //     year: "2024-2025",
@@ -45,7 +46,7 @@ const EducationSlider = () => {
   // ];
 
   console.log(educationData);
-  
+
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextSlide = () => {

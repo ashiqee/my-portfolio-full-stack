@@ -42,17 +42,22 @@ const ProjectCards = ({ project }: { project: any }) => {
             <CardFooter className="flex flex-col  gap-3">
               <div className="w-full h-full">
                 <Link href={`/projects/${project._id}`}>
-                <div className="flex gap-2 flex-col">
-                  <p className="text-xl">{project.title}</p>
-                  <p className="text-tiny  text-white/60">
-                    {project.description.slice(0, 100)}
-                  </p>
-                  <p className="text-tiny flex gap-2 text-white/60">
-                    {project.tags.slice(0, 5).map((tag: any, i: number) => (
-                      <span className="text-[10px] border bg-black/45 text-white px-2 py-1 rounded" key={i}>{tag}</span>
-                    ))}
-                  </p>
-                </div>
+                  <div className="flex gap-2 flex-col">
+                    <p className="text-xl">{project.title}</p>
+                    <p className="text-tiny  text-white/60">
+                      {project.description.slice(0, 100)}
+                    </p>
+                    <p className="text-tiny flex gap-2 text-white/60">
+                      {project.tags.slice(0, 5).map((tag: any, i: number) => (
+                        <span
+                          key={i}
+                          className="text-[10px] border bg-black/45 text-white px-2 py-1 rounded"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </p>
+                  </div>
                 </Link>
               </div>
               <div className="flex w-full pb-2 gap-2 justify-between items-center">

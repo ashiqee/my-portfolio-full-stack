@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Card, CardFooter, Image, Button, Link } from "@nextui-org/react";
+import { Card, CardFooter, Image, Link } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 
 const BlogCard = ({ project }: { project: any }) => {
@@ -41,15 +41,14 @@ const BlogCard = ({ project }: { project: any }) => {
             <CardFooter className="flex flex-col  gap-3">
               <div className="w-full h-full">
                 <Link href={`/blogs/${project.id}`}>
-                <div className="flex flex-col">
-                  <p className="text-xl">{project.title}</p>
-                  <p className="text-tiny  text-white/60">
-                    {project.description.slice(0, 100)}
-                  </p>
-                </div>
+                  <div className="flex flex-col">
+                    <p className="text-xl">{project.title}</p>
+                    <p className="text-tiny  text-white/60">
+                      {project.description.slice(0, 100)}
+                    </p>
+                  </div>
                 </Link>
               </div>
-             
             </CardFooter>
           </motion.div>
         </Card>

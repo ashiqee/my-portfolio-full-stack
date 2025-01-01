@@ -1,8 +1,6 @@
-'use client'
-import { GetServerSideProps, NextPage } from "next";
-
+"use client";
+import { NextPage } from "next";
 import Image from "next/image";
-
 
 type ProjectDetails = {
   id: string;
@@ -23,25 +21,28 @@ type ProjectProps = {
 };
 
 const ProjectDetailsCard: NextPage<ProjectProps> = ({ project }) => {
- 
-
   return (
     <div className="bg-gray-100/5 min-h-screen p-10">
       <div className=" mx-auto">
-        <h1 className=" text-2xl md:text-4xl font-bold  mb-4">{project.title}</h1>
+        <h1 className=" text-2xl md:text-4xl font-bold  mb-4">
+          {project.title}
+        </h1>
         <div className="flex flex-col md:flex-row md:justify-between mb-6">
           <div className="text-sm ">
             <p>
-              Category:{" "}
-              <span className="font-medium ">{project.category}</span>
+              Category: <span className="font-medium ">{project.category}</span>
             </p>
             <p>
               Start Date:{" "}
-              <span className="font-medium">{new Date(project.startDate).toLocaleDateString()}</span>
+              <span className="font-medium">
+                {new Date(project.startDate).toLocaleDateString()}
+              </span>
             </p>
             <p>
               End Date:{" "}
-              <span className="font-medium">{new Date(project.endDate).toLocaleDateString()}</span>
+              <span className="font-medium">
+                {new Date(project.endDate).toLocaleDateString()}
+              </span>
             </p>
           </div>
           {/* <div className="flex space-x-4 mt-4 md:mt-0">
@@ -58,7 +59,10 @@ const ProjectDetailsCard: NextPage<ProjectProps> = ({ project }) => {
           <h2 className="text-2xl font-semibold  mb-3">Techs</h2>
           <div className="flex flex-wrap gap-2">
             {project.tags.map((tag, index) => (
-              <span key={index} className="bg-gray-200 text-black  px-3 py-1 rounded">
+              <span
+                key={index}
+                className="bg-gray-200 text-black  px-3 py-1 rounded"
+              >
                 {tag}
               </span>
             ))}
@@ -70,25 +74,25 @@ const ProjectDetailsCard: NextPage<ProjectProps> = ({ project }) => {
             {project.images.map((image, index) => (
               <div key={index} className="rounded shadow-md overflow-hidden">
                 <Image
-                  src={image}
                   alt={`Screenshot ${index + 1}`}
-                  width={900}
-                  height={700}
                   className="object-cover"
+                  height={700}
+                  src={image}
+                  width={900}
                 />
               </div>
             ))}
           </div>
         </div>
         <div>
-          <h2 className="text-2xl font-semibold  mb-3">Comments ({project.commentsCount})</h2>
+          <h2 className="text-2xl font-semibold  mb-3">
+            Comments ({project.commentsCount})
+          </h2>
           <p className=" italic">No comments yet. Be the first to leave one!</p>
         </div>
       </div>
     </div>
   );
 };
-
-
 
 export default ProjectDetailsCard;

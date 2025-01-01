@@ -67,7 +67,7 @@ const AboutSection = () => {
       <section>
         <Education />
       </section>
-       <AnimatedElements />
+      <AnimatedElements />
     </div>
   );
 };

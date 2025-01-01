@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { Input, Button } from '@nextui-org/react';
+import { useState, useEffect } from "react";
+import { Input, Button } from "@nextui-org/react";
 
 export default function ManageBlogs() {
   const [blogs, setBlogs] = useState<string[][]>([]);
@@ -9,7 +9,7 @@ export default function ManageBlogs() {
   const [editedRow, setEditedRow] = useState<string[]>([]);
 
   useEffect(() => {
-    fetch('/api/blogs')
+    fetch("/api/blogs")
       .then((res) => res.json())
       .then((data) => setBlogs(data))
       .catch((err) => console.error(err));
@@ -17,18 +17,17 @@ export default function ManageBlogs() {
 
   const handleEditClick = (index: number) => {
     console.log(index);
-    console.log(blogs[index+1]);
-    
-    
+    console.log(blogs[index + 1]);
+
     setEditableRowIndex(index);
-    setEditedRow(blogs[index+1]);
+    setEditedRow(blogs[index + 1]);
   };
 
   const handleSaveClick = async () => {
     try {
-      const response = await fetch('/api/updateBlogs', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("/api/updateBlogs", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           range: `A${editableRowIndex! + 3}`, // Assuming first row is headers
           values: [editedRow],
@@ -38,12 +37,14 @@ export default function ManageBlogs() {
       if (response.ok) {
         setBlogs((prev) => {
           const updatedBlogs = [...prev];
+
           updatedBlogs[editableRowIndex!] = editedRow;
+
           return updatedBlogs;
         });
         setEditableRowIndex(null);
       } else {
-        console.error('Failed to update data');
+        console.error("Failed to update data");
       }
     } catch (err) {
       console.error(err);
@@ -58,14 +59,21 @@ export default function ManageBlogs() {
   return (
     <div className=" p-5">
       <h2 className="text-2xl mb-5">Manage Blogs</h2>
-      <div className="overflow-x-auto bg-white shadow rounded-lg">
+      <div className="overflow-x-auto bg-white/5 shadow rounded-lg">
         <table className="min-w-full table-auto">
-          <thead className="bg-gray-100">
+          <thead className="bg-gray-100/5">
             <tr>
               {blogs[0]?.map((header, i) => (
-                <th key={i} className="px-4 py-2 text-left font-semibold text-sm">{header}</th>
+                <th
+                  key={i}
+                  className="px-4 py-2 text-left font-semibold text-sm"
+                >
+                  {header}
+                </th>
               ))}
-              <th className="px-4 py-2 text-left font-semibold text-sm">Actions</th>
+              <th className="px-4 py-2 text-left font-semibold text-sm">
+                Actions
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -75,10 +83,11 @@ export default function ManageBlogs() {
                   <td key={colIndex} className="px-4 py-2">
                     {editableRowIndex === rowIndex ? (
                       <Input
-                      className='w-40'
-                        value={editedRow[colIndex] || ''}
+                        className="w-40"
+                        value={editedRow[colIndex] || ""}
                         onChange={(e) => {
                           const newRow = [...editedRow];
+
                           newRow[colIndex] = e.target.value;
                           setEditedRow(newRow);
                         }}
@@ -92,12 +101,18 @@ export default function ManageBlogs() {
                   {editableRowIndex === rowIndex ? (
                     <div>
                       <Button onPress={handleSaveClick}>Save</Button>
-                      <Button onPress={handleCancelClick} className="ml-2" color="danger">
+                      <Button
+                        className="ml-2"
+                        color="danger"
+                        onPress={handleCancelClick}
+                      >
                         Cancel
                       </Button>
                     </div>
                   ) : (
-                    <Button onPress={() => handleEditClick(rowIndex)}>Edit</Button>
+                    <Button onPress={() => handleEditClick(rowIndex)}>
+                      Edit
+                    </Button>
                   )}
                 </td>
               </tr>

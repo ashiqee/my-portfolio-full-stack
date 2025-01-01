@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { getCurrentUser } from "./services/AuthService";
 
-const authRoutes = ["/login", "/register",];
+const authRoutes = ["/login", "/register"];
 
 type Role = keyof typeof roleBasedRoutes;
 

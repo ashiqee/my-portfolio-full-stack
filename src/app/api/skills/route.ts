@@ -1,17 +1,17 @@
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
-import { google } from 'googleapis';
+import { google } from "googleapis";
 
 export async function GET() {
   const auth = new google.auth.GoogleAuth({
     credentials: {
       client_email: process.env.GOOGLE_SHEETS_CLIENT_EMAIL,
-      private_key: process.env.GOOGLE_SHEETS_PRIVATE_KEY?.replace(/\\n/g, '\n'),
+      private_key: process.env.GOOGLE_SHEETS_PRIVATE_KEY?.replace(/\\n/g, "\n"),
     },
-    scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly'],
+    scopes: ["https://www.googleapis.com/auth/spreadsheets.readonly"],
   });
 
-  const sheets = google.sheets({ version: 'v4', auth });
+  const sheets = google.sheets({ version: "v4", auth });
   const spreadsheetId = process.env.SPREADSHEET_ID;
   const range = process.env.SPREADSHEET_NAME_SKILLS;
 
@@ -23,8 +23,6 @@ export async function GET() {
 
     // Get the data
     const data = res?.data?.values;
-   
-    
 
     // If data exists and has more than one row (header + data)
     if (data && data.length > 1) {
@@ -36,6 +34,7 @@ export async function GET() {
       const sortedData = rows.sort((a, b) => {
         const newsIdA = parseInt(a[0], 10); // Assuming news_id is in column 0
         const newsIdB = parseInt(b[0], 10);
+
         return newsIdB - newsIdA; // Descending order
       });
 
@@ -45,26 +44,27 @@ export async function GET() {
       return new Response(JSON.stringify(sortedDataWithHeader), {
         status: 200,
         headers: {
-          'Content-Type': 'application/json',
-          'Cache-Control': 'no-store, max-age=0',
+          "Content-Type": "application/json",
+          "Cache-Control": "no-store, max-age=0",
         },
       });
     } else {
-      return new Response(JSON.stringify({ error: 'No data available' }), {
+      return new Response(JSON.stringify({ error: "No data available" }), {
         status: 404,
         headers: {
-          'Content-Type': 'application/json',
-          'Cache-Control': 'no-store, max-age=0',
+          "Content-Type": "application/json",
+          "Cache-Control": "no-store, max-age=0",
         },
       });
     }
   } catch (err) {
-    console.error('Error fetching data:', err);
-    return new Response(JSON.stringify({ error: 'Failed to fetch data' }), {
+    console.error("Error fetching data:", err);
+
+    return new Response(JSON.stringify({ error: "Failed to fetch data" }), {
       status: 500,
       headers: {
-        'Content-Type': 'application/json',
-        'Cache-Control': 'no-store, max-age=0',
+        "Content-Type": "application/json",
+        "Cache-Control": "no-store, max-age=0",
       },
     });
   }

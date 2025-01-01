@@ -1,8 +1,12 @@
 "use client";
+
 import { useState, useRef, SetStateAction } from "react";
-import JoditEditor from "jodit-react";
+import dynamic from "next/dynamic"; // Import dynamic
 import HTMLReactParser from "html-react-parser";
-import { Button, Input } from "@nextui-org/react"; // Import NextUI components
+import { Button, Image, Input } from "@nextui-org/react"; // Import NextUI components
+
+// Dynamically import JoditEditor with SSR disabled
+const JoditEditor = dynamic(() => import("jodit-react"), { ssr: false });
 
 export default function AddBlogPost() {
   const [title, setTitle] = useState("");
@@ -12,8 +16,10 @@ export default function AddBlogPost() {
 
   const handleBlogImgUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
+
     if (file) {
       const reader = new FileReader();
+
       reader.onloadend = () => {
         setBlogImg(reader.result as string);
       };
@@ -36,39 +42,41 @@ export default function AddBlogPost() {
       <div className="flex flex-col  my-10 gap-10 mb-10">
         <div className="w-full">
           <Input
+            isClearable
             aria-label="Title of the blog"
+            className="font-bold w-full text-black"
+            label="Title of the blog"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            isClearable
-            label="Title of the blog"
-            className="font-bold w-full text-black"
           />
         </div>
         <div className="w-full">
           <Input
-            type="file"
             aria-label="Blog Image"
-            onChange={handleBlogImgUpload}
             className="w-full"
+            type="file"
+            onChange={handleBlogImgUpload}
           />
         </div>
       </div>
       <JoditEditor
-  ref={editor}
-  value={content}
-  className="text-black bg-slate-400/25 min-h-[600px] h-[400px] leading-6" // Set min height, specific height, and line height
-  onChange={(newContent: SetStateAction<string>) => setContent(newContent)}
-/>
+        ref={editor}
+        className="text-black bg-slate-400/25 min-h-[600px] h-[400px] leading-6" // Set min height, specific height, and line height
+        value={content}
+        onChange={(newContent: SetStateAction<string>) =>
+          setContent(newContent)
+        }
+      />
 
       <div className="text-right mt-5">
-        <Button onPress={handleAddBlogPost} color="primary">
+        <Button color="primary" onPress={handleAddBlogPost}>
           Add Blog Post
         </Button>
       </div>
 
       {/* Displaying the blog content */}
       <div className="mt-20 text-2xl">{title}</div>
-      {blogImg && <img src={blogImg} alt="Blog image" />}
+      {blogImg && <Image alt="Blog image" src={blogImg} />}
       <div>{HTMLReactParser(content)}</div>
     </div>
   );

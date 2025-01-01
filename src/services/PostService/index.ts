@@ -73,7 +73,7 @@ export const getAllPosts = async (query: Record<string, any>) => {
 };
 
 // get single post details
-export const getAPostsDetails = async (id:string) => {
+export const getAPostsDetails = async (id: string) => {
   const res = await axiosInstance.get(`/posts/${id}`);
 
   // if (!res.success) {
