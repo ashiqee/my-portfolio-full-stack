@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef } from "react";
+import { useState, useRef, SetStateAction } from "react";
 import JoditEditor from "jodit-react";
 import HTMLReactParser from "html-react-parser";
 import { Button, Input } from "@nextui-org/react"; // Import NextUI components
@@ -10,34 +10,19 @@ export default function AddBlogPost() {
   const [blogImg, setBlogImg] = useState("");
   const editor = useRef(null);
 
-  const handleBlogImgUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleBlogImgUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      const formData = new FormData();
-      formData.append("file", file);
-      formData.append("upload_preset", "your_upload_preset"); // Add your Cloudinary upload preset here
-
-      try {
-        // Send the file to Cloudinary via POST request
-        const response = await fetch(
-          `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/ashiqe-portfolio`,
-          {
-            method: "POST",
-            body: formData,
-          }
-        );
-
-        const data = await response.json();
-        if (data.secure_url) {
-          setBlogImg(data.secure_url); // Set the returned image URL
-        }
-      } catch (error) {
-        console.error("Error uploading image:", error);
-      }
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setBlogImg(reader.result as string);
+      };
+      reader.readAsDataURL(file);
     }
   };
 
   const handleAddBlogPost = () => {
+    // Handle blog post submission logic here
     console.log("Blog Title:", title);
     console.log("Blog Content:", content);
     console.log("Blog Image:", blogImg);
@@ -48,7 +33,7 @@ export default function AddBlogPost() {
       <div>
         <h2 className="text-3xl">Add new blog post</h2>
       </div>
-      <div className="flex flex-col my-10 gap-10 mb-10">
+      <div className="flex flex-col  my-10 gap-10 mb-10">
         <div className="w-full">
           <Input
             aria-label="Title of the blog"
@@ -69,11 +54,11 @@ export default function AddBlogPost() {
         </div>
       </div>
       <JoditEditor
-        ref={editor}
-        value={content}
-        className="text-black bg-slate-400/25 min-h-[600px] h-[400px] leading-6"
-        onChange={(newContent) => setContent(newContent)}
-      />
+  ref={editor}
+  value={content}
+  className="text-black bg-slate-400/25 min-h-[600px] h-[400px] leading-6" // Set min height, specific height, and line height
+  onChange={(newContent: SetStateAction<string>) => setContent(newContent)}
+/>
 
       <div className="text-right mt-5">
         <Button onPress={handleAddBlogPost} color="primary">

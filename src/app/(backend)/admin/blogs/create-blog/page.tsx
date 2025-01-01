@@ -1,6 +1,7 @@
 import React from "react";
 import CreateBlogForm from "./AddBlogForm";
 
+
 export default function CreateBlog() {
     return (
         <div>
@@ -8,6 +9,8 @@ export default function CreateBlog() {
 
             <CreateBlogForm/>
  </React.StrictMode>
+
+
         </div>
     );
 }
