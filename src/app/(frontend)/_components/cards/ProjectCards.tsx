@@ -43,7 +43,7 @@ const ProjectCards = ({ project }: { project: any }) => {
               <div className="w-full h-full">
                 <Link href={`/projects/${project._id}`}>
                   <div className="flex gap-2 flex-col">
-                    <p className="text-xl">{project.title}</p>
+                    <p className="text-xl text-white">{project.title}</p>
                     <p className="text-tiny  text-white/60">
                       {project.description.slice(0, 100)}
                     </p>

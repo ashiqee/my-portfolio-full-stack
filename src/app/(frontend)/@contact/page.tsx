@@ -8,6 +8,7 @@ import { siteConfig } from "@/config/site";
 import { DiscordIcon, GithubIcon, TwitterIcon } from "@/components/icons";
 import TextHover from "@/components/Animations/Text/TextHover";
 import AnimatedElements from "@/components/Animations/AnimatedElements";
+import { Mail, Map, MapPin } from "lucide-react";
 
 const ContactSection = () => {
   return (
@@ -27,8 +28,8 @@ const ContactSection = () => {
               </span>{" "}
               +8801614-654397
             </p>
-            <p> Email: aashekmahmud@gmail.com</p>
-            <p> Location: Dhaka,Bangladesh</p>
+            <p> <Mail size={20} />: aashekmahmud@gmail.com</p>
+            <p> <MapPin size={20} />: Dhaka,Bangladesh</p>
           </div>
         </div>
         <div className="flex gap-4 items-center">

@@ -11,7 +11,7 @@ import AnimatedElements from "@/components/Animations/AnimatedElements";
 
 const AboutSection = () => {
   return (
-    <div className="flex flex-col  justify-center items-center mx-6 2xl:mx-0 text-justify ">
+    <div className="flex flex-col z-50 justify-center items-center mx-6 2xl:mx-0 text-justify ">
       {/* top section  */}
       <div className="md:flex min-h-screen justify-between items-center">
         <div className="space-y-4 mb-10 md:mb-0">

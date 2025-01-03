@@ -10,7 +10,7 @@ const AllProjects = async () => {
   const projects = res.data.data;
 
   return (
-    <div className="mx-6  2xl:mx-0">
+    <div className="mx-6 mb-20 2xl:mx-0">
       <div className="my-10">
         <h2 className="text-3xl">
           <TextHover>Checkout my all work...</TextHover>

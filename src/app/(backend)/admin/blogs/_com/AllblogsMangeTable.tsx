@@ -52,7 +52,10 @@ export default function AllBlogsManageTable() {
               <TableBody>
                 {blogsData && blogsData.length > 0 ? (
                   blogsData.map((blog: any, index: number) => (
-                    <TableRow className="border-b border-gray-500/45" key={index}>
+                    <TableRow
+                      className="border-b border-gray-500/45"
+                      key={index}
+                    >
                       <TableCell>{blog?.createdAt}</TableCell>
                       <TableCell>
                         <Image
